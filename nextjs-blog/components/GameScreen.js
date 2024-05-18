@@ -115,9 +115,9 @@ const GameScreen = ({ onGameOver }) => {
     console.log(Math.abs(targetG - mixedG));
     console.log(Math.abs(targetB - mixedB));
 
-    if (Math.abs(parseInt(targetRGB.substr(0, 2), 16) - parseInt(mixedRGB.substr(0, 2), 16)) <= 30 &&
-        Math.abs(parseInt(targetRGB.substr(2, 2), 16) - parseInt(mixedRGB.substr(2, 2), 16)) <= 30 &&
-        Math.abs(parseInt(targetRGB.substr(4, 2), 16) - parseInt(mixedRGB.substr(4, 2), 16)) <= 30) {
+    if (Math.abs(parseInt(targetRGB.substr(0, 2), 16) - parseInt(mixedRGB.substr(0, 2), 16)) <= 25 &&
+        Math.abs(parseInt(targetRGB.substr(2, 2), 16) - parseInt(mixedRGB.substr(2, 2), 16)) <= 25 &&
+        Math.abs(parseInt(targetRGB.substr(4, 2), 16) - parseInt(mixedRGB.substr(4, 2), 16)) <= 25) {
       setIsClear(true);
     }
     else if(Math.abs(parseInt(targetRGB.substr(0, 2), 16) - parseInt(mixedRGB.substr(0, 2), 16)) <= 40 &&
