@@ -135,7 +135,7 @@ const GameScreen = ({ onGameOver }) => {
       <div>
         <div className={`oshiiText ${isOshii ? 'active' : ''}`}>もう少し！</div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%', paddingBottom: '30px' }}>
         
         <div>
           <div style={{ textAlign: 'center' }}>現在の色</div>
