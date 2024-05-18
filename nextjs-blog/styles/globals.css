@@ -23,9 +23,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 45%;
   height: 100vh;
   width: 100vw;
+  
 }
 
 button {
@@ -64,7 +66,8 @@ button {
   font-size: 32px;
   text-align: center;
   font-family: 'LightNovel', sans-serif;
-  padding-top: 60px;
+  padding-bottom: 30px;
+  margin: 0;
 }
 
 .oshiiText {
