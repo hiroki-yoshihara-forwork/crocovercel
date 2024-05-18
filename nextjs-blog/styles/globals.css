@@ -1,0 +1,79 @@
+@font-face {
+  font-family: 'LightNovel';
+  src: url('/fonts/LightNovelPOPv2.otf') format('opentype');
+}
+
+@keyframes colorChange {
+  0% { color: red; }
+  16% { color: orange; }
+  36% { color: green; }
+  52% { color: blue; }
+  68% { color: purple; }
+  84% { color: pink; }
+  100% { color: red; }
+}
+
+body {
+  margin: 0;
+  font-family: 'LightNovel',Arial, sans-serif;
+  background: #dae4b3
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: 'LightNovel',Arial, sans-serif;
+}
+
+.color-box {
+  width: 75px;
+  height: 75px;
+  margin: 10px;
+  border: solid 1px #000000;
+}
+
+.accordion {
+  width: 350px;
+  margin: 10px;
+  text-align: center;
+  font-family: 'LightNovel',Arial, sans-serif;
+}
+
+.accordion-content {
+  display: none;
+  font-family: 'LightNovel',Arial, sans-serif;
+}
+
+.accordion-content.active {
+  display: block;
+  font-family: 'LightNovel',Arial, sans-serif;
+}
+
+.gametitle {
+  animation: colorChange 10s infinite;
+  font-size: 32px;
+  text-align: center;
+  font-family: 'LightNovel', sans-serif;
+  padding-top: 60px;
+}
+
+.oshiiText {
+  font-size: 28px;
+  color: orange;
+  display: none;
+  padding-bottom: 20px
+}
+
+.oshiiText.active {
+  display: block;
+}

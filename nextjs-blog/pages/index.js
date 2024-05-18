@@ -1,46 +1,26 @@
-import Head from 'next/head';
-import Link from 'next/link'
-import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts'
+import React, { useState } from 'react';
+import StartScreen from '../components/StartScreen';
+import GameScreen from '../components/GameScreen';
+import GameOver from '../components/GameOver';
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
+const ColorGame = () => {
+  const [screen, setScreen] = useState('start');
+  const [steps, setSteps] = useState(0);
+
+  const handleStart = () => setScreen('game');
+  const handleGameOver = (steps) => {
+    setSteps(steps);
+    setScreen('gameover');
   };
-}
-export default function Home({ allPostsData }) {
+  const handleRestart = () => setScreen('start');
+
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <section className={utilStyles.headingMd}>
-        <p>[ゲームをこよなく愛するエンジニアです。]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`} >
-                {title}
-                <br />
-                {id}
-                <br />
-                {date}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </Layout>
+    <>
+      {screen === 'start' && <StartScreen onStart={handleStart} />}
+      {screen === 'game' && <GameScreen onGameOver={handleGameOver} />}
+      {screen === 'gameover' && <GameOver steps={steps} onRestart={handleRestart} />}
+    </>
   );
-}
+};
+
+export default ColorGame;
