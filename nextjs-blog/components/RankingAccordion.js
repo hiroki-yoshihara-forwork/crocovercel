@@ -7,7 +7,7 @@ const RankingAccordion = () => {
 
   useEffect(() => {
     const fetchRanking = async () => {
-      const rankingRef = db.collection('ranking').orderBy('steps').limit(10);
+      const rankingRef = db.collection('ranking').orderBy('steps').limit(100);
       const snapshot = await rankingRef.get();
       const rankingData = snapshot.docs.map(doc => doc.data());
       setRanking(rankingData);
