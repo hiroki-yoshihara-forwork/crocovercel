@@ -5,6 +5,17 @@ const GameOver = ({ steps, onRestart }) => {
   const [isHighScore, setIsHighScore] = useState(false);
   const [playerName, setPlayerName] = useState('');
   const [showInput, setShowInput] = useState(false);
+  const [error, setError] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+
+  const handleNameChange = (e) => {
+    setPlayerName(e.target.value);
+    if (e.target.value) {
+      setError('');
+    }
+  };
+
 
   useEffect(() => {
     const checkHighScore = async () => {
@@ -29,20 +40,40 @@ const GameOver = ({ steps, onRestart }) => {
     onRestart();
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!playerName) {
+      setError('プレイヤー名を入力してね');
+      return;
+    }
+    setIsSubmitted(true);
+
+    await db.collection('ranking').add({
+      playerName: playerName,
+      steps: steps
+    });
+
+    onRestart();
+  };
+
   return (
     <div className="container">
       <h1>Congratulation!!</h1>
       {isHighScore ? (
         <>
           <h2>ランクインおめでとう!!!</h2>
-          <input
-            type="text"
-            value={playerName}
-            onChange={(e) => setPlayerName(e.target.value)}
-            maxLength="10"
-            placeholder="プレイヤーネーム"
-          />
-          <button onClick={handleSave}>送信する</button>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              value={playerName}
+              onChange={handleNameChange}
+              maxLength="10"
+              placeholder="プレイヤーネーム"
+            />
+            <button type="submit" disabled={isSubmitted}>送信する</button>
+          </form>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          
         </>
       ) : (
         <>

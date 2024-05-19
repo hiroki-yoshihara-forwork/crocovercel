@@ -33,7 +33,7 @@ body {
 button {
   margin: 10px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'LightNovel',Arial, sans-serif;
 }
 
@@ -79,4 +79,14 @@ button {
 
 .oshiiText.active {
   display: block;
+}
+
+input{
+  font-family: 'LightNovel',Arial, sans-serif;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 2px;
+  border: solid 1px #888;
+  line-height: 1.5;
 }
