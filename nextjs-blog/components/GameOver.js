@@ -28,17 +28,8 @@ const GameOver = ({ steps, onRestart }) => {
         setShowInput(true);
       }
     };
-
     checkHighScore();
   }, [steps]);
-
-  const handleSave = async () => {
-    await db.collection('ranking').add({
-      playerName: playerName,
-      steps: steps
-    });
-    onRestart();
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
